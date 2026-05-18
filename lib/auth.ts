@@ -6,7 +6,9 @@ export const auth = betterAuth({
   baseURL: "http://localhost:4100",
   trustedOrigins: ["http://localhost:3100"],
   database: new Pool({
-    connectionString: "postgresql://postgres:sciadmin88@localhost:5432/auth-db",
+    connectionString:
+      process.env.DB_CONNECTION ||
+      "postgresql://postgres:sciadmin88@localhost:5432/auth-db",
   }),
   emailAndPassword: {
     enabled: true,
