@@ -1,0 +1,31 @@
+{
+  "name": "identity-management-platform",
+  "version": "0.0.0-alpha.1",
+  "description": "",
+  "main": "lib/index.ts",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "dev": "nodemon lib/index.ts",
+    "local-db": "docker run --name better-auth-db -e POSTGRES_PASSWORD=sciadmin88 -p 5432:5432 -d postgres"
+  },
+  "dependencies": {
+    "better-auth": "^1.6.11",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "pg": "^8.20.0"
+  },
+  "keywords": [],
+  "author": "rakakhrl",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/pg": "^8.20.0",
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.3"
+  }
+}
