@@ -1,4 +1,5 @@
 import { betterAuth } from "better-auth";
+import { jwt, openAPI } from "better-auth/plugins";
 import { Pool } from "pg";
 
 export const auth = betterAuth({
@@ -13,4 +14,5 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
+  plugins: [openAPI({ path: "/api/auth/docs" }), jwt()],
 });
