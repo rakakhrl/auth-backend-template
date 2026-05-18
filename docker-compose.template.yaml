@@ -6,7 +6,7 @@ services:
     ports:
       - "4100:4100"
     environment:
-      - DB_CONNECTION=postgresql://postgres:sciadmin88@database:5432/auth-db
+      - DB_CONNECTION=postgresql://<username>:<password>@<host>:5432/<database>
     depends_on:
       database:
         condition: service_healthy
@@ -17,13 +17,13 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=sciadmin88
-      - POSTGRES_DB=auth-db
+      - POSTGRES_USER=
+      - POSTGRES_PASSWORD=
+      - POSTGRES_DB=auth-
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d auth-db"]
+      test: ["CMD-SHELL", "pg_isready -U <username> -d <database>"]
       interval: 5s
       timeout: 5s
       retries: 5
