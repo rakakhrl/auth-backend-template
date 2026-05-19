@@ -1,7 +1,6 @@
-import { APIError, betterAuth } from "better-auth";
+import { betterAuth } from "better-auth";
 import { emailOTP, jwt, openAPI, organization } from "better-auth/plugins";
 import { Pool } from "pg";
-import UserMiddleware from "./middleware/user";
 
 export const auth = betterAuth({
   secret: "Dl8EDKjAD8B6uJciLHoU8SeP3OWKIJsj",
@@ -31,15 +30,6 @@ export const auth = betterAuth({
         }
       },
     }),
-    organization({
-      allowUserToCreateOrganization: async (user) => {
-        const allowed = await new UserMiddleware(user).permission(
-          "organization",
-          "create",
-        );
-
-        return allowed;
-      },
-    }),
+    organization(),
   ],
 });
